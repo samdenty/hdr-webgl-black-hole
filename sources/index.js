@@ -1,15 +1,17 @@
-import './style.css'
-import Experience from './Experience/Experience.js'
+import { inject } from "@vercel/analytics";
+import "./style.css";
+import Experience from "./Experience/Experience.js";
+
+inject();
 
 const experience = new Experience({
-    targetElement: document.querySelector('.experience')
-})
-
+	targetElement: document.querySelector(".experience"),
+});
 
 setTimeout(() => {
-    // Create HDR toggle checkbox
-    const hdrToggle = document.createElement('div');
-    hdrToggle.style.cssText = `
+	// Create HDR toggle checkbox
+	const hdrToggle = document.createElement("div");
+	hdrToggle.style.cssText = `
             position: fixed;
             top: 10px;
             left: 10px;
@@ -27,28 +29,28 @@ setTimeout(() => {
             gap: 6px;
     `;
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = 'hdr-toggle';
-    checkbox.style.cssText = `
+	const checkbox = document.createElement("input");
+	checkbox.type = "checkbox";
+	checkbox.id = "hdr-toggle";
+	checkbox.style.cssText = `
             cursor: pointer;
             margin: 0;
     `;
-    checkbox.checked = true;
+	checkbox.checked = true;
 
-    const label = document.createElement('label');
-    label.htmlFor = 'hdr-toggle';
-    label.textContent = 'Toggle HDR';
-    label.style.cssText = `
+	const label = document.createElement("label");
+	label.htmlFor = "hdr-toggle";
+	label.textContent = "Toggle HDR";
+	label.style.cssText = `
             cursor: pointer;
             user-select: none;
     `;
 
-    checkbox.addEventListener('change', function() {
-            document.body.classList.toggle('disable-hdr', !this.checked);
-    });
+	checkbox.addEventListener("change", function () {
+		document.body.classList.toggle("disable-hdr", !this.checked);
+	});
 
-    hdrToggle.appendChild(checkbox);
-    hdrToggle.appendChild(label);
-    document.body.appendChild(hdrToggle);
+	hdrToggle.appendChild(checkbox);
+	hdrToggle.appendChild(label);
+	document.body.appendChild(hdrToggle);
 });
