@@ -8,7 +8,7 @@ const experience = new Experience({
 	targetElement: document.querySelector(".experience"),
 });
 
-setTimeout(() => {
+requestAnimationFrame(() => {
 	// Create HDR toggle checkbox
 	const hdrToggle = document.createElement("div");
 	hdrToggle.style.cssText = `
@@ -53,4 +53,6 @@ setTimeout(() => {
 	hdrToggle.appendChild(checkbox);
 	hdrToggle.appendChild(label);
 	document.body.appendChild(hdrToggle);
+
+	experience.resize();
 });
