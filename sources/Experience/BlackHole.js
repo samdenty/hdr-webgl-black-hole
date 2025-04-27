@@ -30,20 +30,20 @@ export default class BlackHole
     setCommonUniforms()
     {
         this.commonUniforms = {}
-        this.commonUniforms.uInnerColor = { value: new THREE.Color('#ff8080') }
-        this.commonUniforms.uOuterColor = { value: new THREE.Color('#3633ff') }
+        this.commonUniforms.uInnerColor = { value: new THREE.Color('#ff8d43') }
+        this.commonUniforms.uOuterColor = { value: new THREE.Color('#911d0a') }
 
         // Debug
         if(this.debug.active)
         {
             const folder = this.debug.ui.getFolder('blackhole')
-            
+
             folder
                 .addColor(
                     this.commonUniforms.uInnerColor,
                     'value'
                 )
-                
+
             folder
                 .addColor(
                     this.commonUniforms.uOuterColor,
@@ -63,7 +63,7 @@ export default class BlackHole
         this.disc.material.uniforms.uNoiseTexture.value = this.disc.noiseTexture
         this.disc.material.uniforms.uInnerColor = this.commonUniforms.uInnerColor
         this.disc.material.uniforms.uOuterColor = this.commonUniforms.uOuterColor
-        
+
         this.disc.mesh = new THREE.Mesh(
             this.disc.geometry,
             this.disc.material
@@ -112,16 +112,16 @@ export default class BlackHole
     setDistortion()
     {
         this.distortion = {}
-        
+
         this.distortion.active = {}
-        this.distortion.active.geometry = new THREE.PlaneBufferGeometry(1, 1)
+        this.distortion.active.geometry = new THREE.PlaneGeometry(1, 1)
         this.distortion.active.material = new BlackHoleDistortionActiveMaterial()
         this.distortion.active.mesh = new THREE.Mesh(this.distortion.active.geometry, this.distortion.active.material)
         this.distortion.active.mesh.scale.set(10, 10, 10)
         this.scenes.distortion.add(this.distortion.active.mesh)
 
         this.distortion.mask = {}
-        this.distortion.mask.geometry = new THREE.PlaneBufferGeometry(1, 1)
+        this.distortion.mask.geometry = new THREE.PlaneGeometry(1, 1)
         this.distortion.mask.material = new BlackHoleDistortionMaskMaterial()
         this.distortion.mask.mesh = new THREE.Mesh(this.distortion.mask.geometry, this.distortion.mask.material)
         this.distortion.mask.mesh.scale.set(10, 10, 10)

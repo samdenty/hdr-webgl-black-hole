@@ -1,18 +1,16 @@
 {
   "repository": "#",
   "license": "UNLICENSED",
-  "scripts":
-  {
+  "scripts": {
     "dev": "vite serve --host",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies":
-  {
+  "dependencies": {
     "lil-gui": "^0.16.1",
     "stats.js": "^0.17.0",
     "stylus": "^0.58.1",
-    "three": "^0.141.0",
+    "three": "npm:three-hdr@^0.176.3",
     "vite": "^2.9.12",
     "vite-plugin-glsl": "^0.1.2"
   }

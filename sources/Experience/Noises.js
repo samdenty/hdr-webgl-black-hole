@@ -17,7 +17,7 @@ class Noises
         this.experience = new Experience()
         this.renderer = this.experience.renderer
         this.scenes = this.experience.scenes
-        
+
         this.setCustomRender()
         this.setMaterial()
         this.setPlane()
@@ -51,7 +51,7 @@ class Noises
         this.debugPlane = {}
         this.debugPlane.geometry = new THREE.PlaneGeometry(1, 1)
         this.debugPlane.material = new THREE.MeshBasicMaterial()
-        
+
         const meshA = new THREE.Mesh(
             this.debugPlane.geometry,
             this.debugPlane.material
@@ -59,7 +59,7 @@ class Noises
         meshA.position.y = 5 + 1
         meshA.position.x = - 1
         meshA.scale.set(2, 2, 2)
-        
+
         const meshB = new THREE.Mesh(
             this.debugPlane.geometry,
             this.debugPlane.material
@@ -67,7 +67,7 @@ class Noises
         meshB.position.y = 5 + 1
         meshB.position.x = 1
         meshB.scale.set(2, 2, 2)
-        
+
         const meshC = new THREE.Mesh(
             this.debugPlane.geometry,
             this.debugPlane.material
@@ -75,7 +75,7 @@ class Noises
         meshC.position.y = 5 - 1
         meshC.position.x = - 1
         meshC.scale.set(2, 2, 2)
-        
+
         const meshD = new THREE.Mesh(
             this.debugPlane.geometry,
             this.debugPlane.material
@@ -101,10 +101,11 @@ class Noises
             {
                 generateMipmaps: false,
                 wrapS: THREE.RepeatWrapping,
-                wrapT: THREE.RepeatWrapping
+                wrapT: THREE.RepeatWrapping,
+                type: THREE.FloatType
             }
         )
-        
+
         this.renderer.instance.setRenderTarget(renderTarget)
         this.renderer.instance.render(this.customRender.scene, this.customRender.camera)
         this.renderer.instance.setRenderTarget(null)

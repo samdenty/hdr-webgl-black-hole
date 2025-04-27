@@ -13,7 +13,7 @@ export default class Renderer
         this.sizes = this.experience.sizes
         this.scenes = this.experience.scenes
         this.camera = this.experience.camera
-     
+
         this.setInstance()
         this.setComposition()
     }
@@ -25,7 +25,7 @@ export default class Renderer
         // Renderer
         this.instance = new THREE.WebGLRenderer({
             alpha: false,
-            antialias: true
+            antialias: true,
         })
         this.instance.domElement.style.position = 'absolute'
         this.instance.domElement.style.top = 0
@@ -42,8 +42,6 @@ export default class Renderer
         this.instance.outputEncoding = THREE.sRGBEncoding
         this.instance.shadowMap.type = THREE.PCFSoftShadowMap
         this.instance.shadowMap.enabled = true
-        this.instance.toneMapping = THREE.NoToneMapping
-        this.instance.toneMappingExposure = 1
 
         this.context = this.instance.getContext()
 
@@ -52,12 +50,12 @@ export default class Renderer
         {
             this.debug.stats.setRenderPanel(this.context)
         }
-        
+
         // Debug
         if(this.debug.active)
         {
             const folder = this.debug.ui.getFolder('renderer')
-            
+
             folder
                 .addColor(
                     this,
@@ -88,7 +86,7 @@ export default class Renderer
                             _child.material.needsUpdate = true
                     })
                 })
-                
+
             folder
                 .add(
                     this.instance,
@@ -108,10 +106,11 @@ export default class Renderer
             this.sizes.height * 2,
             {
                 magFilter: THREE.LinearFilter,
-                minFilter: THREE.LinearFilter
+                minFilter: THREE.LinearFilter,
+                type: THREE.FloatType
             }
         )
-        
+
         this.composition.distortion = new THREE.WebGLRenderTarget(
             this.sizes.width * 0.5,
             this.sizes.height * 0.5,
@@ -122,7 +121,7 @@ export default class Renderer
                 type: THREE.FloatType
             }
         )
-        
+
         this.composition.final = {}
         this.composition.final.material = new FinalMaterial()
         this.composition.final.material.uniforms.uSpaceTexture.value = this.composition.space.texture
