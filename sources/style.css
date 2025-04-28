@@ -32,15 +32,3 @@ body
 {
     color: inherit;
 }
-
-.three\.js-hdr > canvas {
-    filter: none !important;
-}
-
-.three\.js-hdr-highlight:nth-child(2) {
-    mix-blend-mode: multiply !important;
-}
-
-.three\.js-hdr-highlight:nth-child(3) {
-    display: none !important;
-}
